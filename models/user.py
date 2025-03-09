@@ -1,4 +1,4 @@
-from app import db #variável declarada no app.py
+from database import db #variável declarada no app.py
 from flask_login import UserMixin #utilizada para programar o login
 
 #Criando usuário
