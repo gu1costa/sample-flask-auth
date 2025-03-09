@@ -7,11 +7,9 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db" #URI. o caminho 
 
 #sqlite:///database.db representa o nome do banco de dados a ser utilizado sendo representado pelo caminho do arquivo
 
-db = SQLAlchemy(app) #variável que vai armazenar a instância da classe SQLAlchemy
+db = SQLAlchemy(app) #variável que vai armazenar a instância da classe SQLAlchemy.
 
-#Criando usuário
-
-'''O usuário vai ser criado utilizando a ajuda da variável db (que é uma instância do SQLAlchemy)'''
+# Session <- conexão ativa
 
 @app.route("/hello-world", methods=["GET"])
 def hello_world():
