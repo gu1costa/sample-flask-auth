@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from models.user import User
 from database import db #utilizado para passar o aplicativo para o db em database.
 from flask_login import LoginManager #classe que vai ser responsável pelo gerenciamento do usuário.
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "your_secret_key" #secret key. utilizado pelo flask
@@ -42,6 +42,13 @@ def login():
             return jsonify({"message": "Autenticação realizada com sucesso."})            
     
         return jsonify({"message": "Credenciais inválidas."}), 400
+
+#Logout
+@app.route("/logout", methods=["GET"])
+@login_required #Protegendo a rota de usuários que não estão autenticados
+def logout():
+    logout_user()
+    return jsonify({"message": "Logout realizado com sucesso."})
 
 @app.route("/hello-world", methods=["GET"])
 def hello_world():
